@@ -77,9 +77,7 @@ function handleDeviceOrientation (event) {
   }
 
   console.log(currentPosition)
-  if (horizontalChanged || verticalChanged) {
-    updateDemo(currentPosition)
-  }
+  updateDemo(currentPosition)
 
   previousPosition = currentPosition
 }
