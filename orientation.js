@@ -19,7 +19,7 @@ function updateDemo (position) {
 }
 
 // Reject minor position adjustments
-const deltaThreshold = 1.4
+const deltaThreshold = 1.8
 toPrecision = number => parseFloat(number.toFixed(4))
 
 
