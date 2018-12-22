@@ -45,10 +45,15 @@ function handleDeviceOrientation (event) {
   const gamma = toPrecision(event.gamma) // Rotation axis
 
   const horizontalDelta = toPrecision(Math.abs(alpha) - Math.abs(previousPosition.alpha))
-  const horizontalChanged = Math.abs(horizontalDelta) !== 0
+  const horizontalChanged = Math.abs(horizontalDelta) > deltaThreshold
 
   const verticalDelta = toPrecision(Math.abs(beta) - Math.abs(previousPosition.beta))
-  const verticalChanged = Math.abs(verticalDelta) !== 0
+  const verticalChanged = Math.abs(verticalDelta) > deltaThreshold
+
+  if (!horizontalChanged && !verticalChanged) {
+    // console.log('skipping')
+    return
+  }
 
   let horizontal
   if (horizontalChanged) {
