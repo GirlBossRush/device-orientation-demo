@@ -44,7 +44,7 @@ function handleDeviceOrientation (event) {
   const beta = toPrecision(event.beta)   // Vertical axis
   const gamma = toPrecision(event.gamma) // Rotation axis
 
-  const horizontalDelta = toPrecision(Math.abs(alpha) - Math.abs(previousPosition.alpha))
+  const horizontalDelta = toPrecision(Math.abs(gamma) - Math.abs(previousPosition.gamma))
   const horizontalChanged = Math.abs(horizontalDelta) > deltaThreshold
 
   const verticalDelta = toPrecision(Math.abs(beta) - Math.abs(previousPosition.beta))
@@ -57,7 +57,7 @@ function handleDeviceOrientation (event) {
 
   let horizontal
   if (horizontalChanged) {
-    horizontal = alpha > previousPosition.alpha ? 'right' : 'left'
+    horizontal = gamma > previousPosition.gamma ? 'right' : 'left'
   } else {
     horizontal = previousPosition.horizontal
   }
