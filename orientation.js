@@ -1,20 +1,21 @@
 demoDirection = 'unknown'
 
 function updateDemo (position) {
-  // if (position.horizontalChanged && position.verticalChanged) {
-  //   demoDirection = `${position.horizontal} & ${position.vertical}`
-  // } else if (position.horizontalChanged) {
-  //   demoDirection = position.horizontal
-  // } else if (position.verticalChanged) {
-  //   demoDirection = position.vertical
-  // }
+  if (position.horizontalChanged && position.verticalChanged) {
+    demoDirection = `${position.horizontal} & ${position.vertical}`
+  } else if (position.horizontalChanged) {
+    demoDirection = position.horizontal
+  } else if (position.verticalChanged) {
+    demoDirection = position.vertical
+  }
 
   document.getElementById('alpha').textContent = position.alpha
   document.getElementById('beta').textContent = position.beta
   document.getElementById('gamma').textContent = position.gamma
   document.getElementById('horizontal-delta').textContent = position.horizontalDelta
   document.getElementById('vertical-delta').textContent = position.verticalDelta
-  document.getElementById('direction').textContent = `${position.horizontal} & ${position.vertical}`
+  // document.getElementById('direction').textContent = `${position.horizontal} & ${position.vertical}`
+  document.getElementById('direction').textContent = demoDirection
 }
 
 // Reject minor position adjustments
@@ -44,10 +45,10 @@ function handleDeviceOrientation (event) {
   const gamma = toPrecision(event.gamma) // Rotation axis
 
   const horizontalDelta = toPrecision(Math.abs(alpha) - Math.abs(previousPosition.alpha))
-  const horizontalChanged = Math.abs(horizontalDelta) > 1
+  const horizontalChanged = Math.abs(horizontalDelta) !== 0
 
   const verticalDelta = toPrecision(Math.abs(beta) - Math.abs(previousPosition.beta))
-  const verticalChanged = Math.abs(verticalDelta) > 1
+  const verticalChanged = Math.abs(verticalDelta) !== 0
 
   let horizontal
   if (horizontalChanged) {
@@ -58,7 +59,6 @@ function handleDeviceOrientation (event) {
 
   let vertical
   if (verticalChanged) {
-    // if (gamma > 0)
     vertical = beta > previousPosition.beta ? 'down' : 'up'
   } else {
     vertical = previousPosition.vertical
