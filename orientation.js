@@ -59,7 +59,7 @@ function handleDeviceOrientation (event) {
   let vertical
   if (verticalChanged) {
     // if (gamma > 0)
-    vertical = beta > previousPosition.beta ? 'down' : 'up'
+    vertical = gamma > previousPosition.gamma ? 'down' : 'up'
   } else {
     vertical = previousPosition.vertical
   }
