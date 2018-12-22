@@ -1,12 +1,12 @@
-function updateDemo (position) {
-  let direction = 'unknown'
+demoDirection = 'unknown'
 
+function updateDemo (position) {
   if (position.horizontalChanged && position.verticalChanged) {
-    direction = `${position.horizontal} & ${position.vertical}`
+    demoDirection = `${position.horizontal} & ${position.vertical}`
   } else if (position.horizontalChanged) {
-    direction = position.horizontal
+    demoDirection = position.horizontal
   } else if (position.verticalChanged) {
-    direction = position.vertical
+    demoDirection = position.vertical
   }
 
   document.getElementById('alpha').textContent = position.alpha
@@ -14,7 +14,7 @@ function updateDemo (position) {
   document.getElementById('gamma').textContent = position.gamma
   document.getElementById('horizontal-delta').textContent = position.horizontalDelta
   document.getElementById('vertical-delta').textContent = position.verticalDelta
-  document.getElementById('direction').textContent = direction
+  document.getElementById('direction').textContent = demoDirection
 }
 
 // Reject minor position adjustments
