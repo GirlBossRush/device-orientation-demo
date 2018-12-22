@@ -1,20 +1,20 @@
 demoDirection = 'unknown'
 
 function updateDemo (position) {
-  if (position.horizontalChanged && position.verticalChanged) {
-    demoDirection = `${position.horizontal} & ${position.vertical}`
-  } else if (position.horizontalChanged) {
-    demoDirection = position.horizontal
-  } else if (position.verticalChanged) {
-    demoDirection = position.vertical
-  }
+  // if (position.horizontalChanged && position.verticalChanged) {
+  //   demoDirection = `${position.horizontal} & ${position.vertical}`
+  // } else if (position.horizontalChanged) {
+  //   demoDirection = position.horizontal
+  // } else if (position.verticalChanged) {
+  //   demoDirection = position.vertical
+  // }
 
   document.getElementById('alpha').textContent = position.alpha
   document.getElementById('beta').textContent = position.beta
   document.getElementById('gamma').textContent = position.gamma
   document.getElementById('horizontal-delta').textContent = position.horizontalDelta
   document.getElementById('vertical-delta').textContent = position.verticalDelta
-  document.getElementById('direction').textContent = demoDirection
+  document.getElementById('direction').textContent = `${position.horizontal} & ${position.vertical}`
 }
 
 // Reject minor position adjustments
